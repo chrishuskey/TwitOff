@@ -2,7 +2,7 @@
 The models and data infrastructure for our Twitoff flask app.
 """
 
-from flask-sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 # Create our DB as a SQLAlchemy DB:
 DB = SQLAlchemy()

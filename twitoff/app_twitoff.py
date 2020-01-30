@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from .models import DB  # imports our DB from models.py
 
 # Make our "app factory" (app-creator) function:
 def create_app():
@@ -8,10 +9,20 @@ def create_app():
 
     app = Flask(__name__)
 
+    # Add config. for our DB:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+
+    # Tell our DB about the app:
+    DB.init_app(app)
+
     @app.route('/')
     def root():
         # Deployed model goes here:
-        return "<h1>Welcome to TwitOff!</h1>"
+        return render_template("base.html",
+                                title="Welcome!",
+                                header="Welcome to TwitOff!",
+                                text="Coming soon..."
+                                )
 
     return app
 
