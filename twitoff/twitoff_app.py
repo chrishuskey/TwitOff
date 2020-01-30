@@ -9,6 +9,11 @@ def create_app():
 
     @app.route('/')
     def root():
-        return 'Hello, Twitoff!'
+        # Deployed model goes here:
+        return "<h1>Hello, TwitOff!</h1>"
 
     return app
+
+# [?? Where does this go, and what is it for? ??]
+# if __name__ == "__main__":
+#     app.run(debug=True, port=8080)
