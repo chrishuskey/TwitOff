@@ -1,10 +1,10 @@
 """
-Entry point for Twitoff.
+Entry point for our Twitoff flask app.
 """
 
 # From this directory (.) in the file name app (app) (so .app together),
 # import the create_app function:
-from .twitoff_app import create_app
+from .app_twitoff import create_app
 
 APP = create_app()
 
