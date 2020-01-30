@@ -15,4 +15,11 @@ class User(DB.Model):
 class Tweet(DB.Model):
     """The Tweets we pull from our selected users."""
     id = DB.Column(DB.BigInteger, primary_key=True)
-    text = DB.Column(DB.Unicode(280))
+    text = DB.Column(DB.Unicode(280), nullable=False)
+    # ^^ Unicode allows text, symbols, etc.
+    # Alias "user" = the User table in the DB, so we can ref. the alias below
+    # (DB.backref("tweets") also adds a column "tweets" to the User table with
+    # that user's tweets):
+    user = DB.relationship("User", backref=DB.backref("tweets", lazy=True))
+    # Add a user_id column connecting the tweet to the user who tweeted it:
+    user_id = DB.Column(DB.BigInteger, DB.ForeignKey("user.id"), nullable=False)

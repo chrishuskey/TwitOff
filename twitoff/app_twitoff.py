@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from .models import DB  # imports our DB from models.py
+from .models import DB, User, Tweet  # imports our DB from models.py
 
 # Make our "app factory" (app-creator) function:
 def create_app():
@@ -12,7 +12,7 @@ def create_app():
     # Add config. for our DB:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
-    # Tell our DB about the app:
+    # Tell our DB about the app (initialize our DB with our app):
     DB.init_app(app)
 
     @app.route('/')
